@@ -1,0 +1,26 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(137, 153, 200);
+}
+
+a {
+  color: #0698fa;
+}
+
+.nav-item {
+  font-size: 1.5rem;
+}
+
+.signup-form {
+  width: 20%;
+  margin: 3rem auto;
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.bordered {
+  outline: solid !important;
+}

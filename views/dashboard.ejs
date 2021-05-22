@@ -1,0 +1,17 @@
+<%- include('partials/header') -%>
+
+<h1>dashboard</h1>
+<div class="container">
+  <div class="column justify-content-center flex align-items-center mt-5">
+    <% for(var i=0; i < items.length; i++) {%>
+    <div class="container bordered">
+      <ul class="column list-unstyled">
+        <li><%= items[i].name%></li>
+        <li><%= items[i].desc%></li>
+        <li><%= items[i].course%></li>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+</div>
+<%- include('partials/footer') -%>

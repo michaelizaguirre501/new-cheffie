@@ -1,0 +1,12 @@
+<%- include('partials/header') -%>
+<div class="mt-5">
+  <h2>Add an Item</h2>
+  <form action="/createItem" method="POST">
+    <input type="text" name="name" id="name" />
+    <input type="text" name="desc" id="desc" />
+    <input type="text" name="ingredients" id="ingredients" />
+    <input type="text" name="course" id="course" />
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<%- include('partials/footer') -%>
