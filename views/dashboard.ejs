@@ -1,15 +1,18 @@
 <%- include('partials/header') -%>
 
 <h1>dashboard</h1>
+<h2>Hello <%=user.userName%></h2>
 <div class="container">
-  <div class="column justify-content-center flex align-items-center mt-5">
+  <div class="d-flex flex-row justify-content-between flex-wrap mt-5">
     <% for(var i=0; i < items.length; i++) {%>
-    <div class="container bordered">
-      <ul class="column list-unstyled">
-        <li><%= items[i].name%></li>
-        <li><%= items[i].desc%></li>
-        <li><%= items[i].course%></li>
-      </ul>
+    <div class="card" style="width: 18rem">
+      <img class="card-img-top" src="..." alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title"><%= items[i].name%></h5>
+        <p class="card-text"><%= items[i].desc%></p>
+        <p class="card-text"><%= items[i].course%></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
     <% } %>
   </div>
