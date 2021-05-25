@@ -1,12 +1,21 @@
 <%- include('partials/header') -%>
 
-<h1>dashboard</h1>
-<h2>Hello <%=user.userName%></h2>
+<h2>Hello <%=user.userName[0].toUpperCase() + user.userName.substr(1)%></h2>
+<h3 class="mx-auto text-center" style="width: 50%">Check out the menu.</h3>
 <div class="container">
-  <div class="d-flex flex-row justify-content-between flex-wrap mt-5">
+  <div
+    class="
+      d-flex
+      flex-row
+      align-content-between
+      justify-content-between
+      flex-wrap
+      mt-5
+    "
+  >
     <% for(var i=0; i < items.length; i++) {%>
-    <div class="card" style="width: 18rem">
-      <img class="card-img-top" src="..." alt="Card image cap" />
+    <div class="card mb-5" style="width: 18rem">
+      <img class="card-img-top" src="/images/logo.png" alt="Card image cap" />
       <div class="card-body">
         <h5 class="card-title"><%= items[i].name%></h5>
         <p class="card-text"><%= items[i].desc%></p>

@@ -10,7 +10,7 @@ router.get("/", homeController.getIndex);
 router.get("/dashboard", ensureAuth, itemsController.getMenu);
 router.get("/createItem", homeController.getCreateForm);
 router.post("/createItem", itemsController.createItem);
-router.get("/login", authController.getLogin);
+router.get("/login", ensureGuest, authController.getLogin);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);

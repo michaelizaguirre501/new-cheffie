@@ -1,16 +1,6 @@
 const Items = require("../models/Items");
 
 module.exports = {
-  createItem: async (req, res) => {
-    try {
-      res.render("createItem", {
-        title: "Create Item",
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-
   getMenu: async (req, res) => {
     try {
       const items = await Items.find().lean();
