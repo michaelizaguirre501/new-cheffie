@@ -29,5 +29,10 @@
     <% } %>
   </div>
 </div>
+
+<form id="orderForm" action="/api/addOrder" method="POST">
+  <input name="orders" id="orders" type="text" hidden />
+  <button type="submit">SUBMIT ORDER</button>
+</form>
 <script src="/javascript/order.js"></script>
 <%- include('partials/footer') -%>

@@ -1,12 +1,14 @@
-const Item = require("../models/Item");
-const orderArr = require("../public/javascript/order");
+const Items = require("../models/Items");
 
 module.exports = {
   addOrder: async (req, res) => {
     try {
-      ///get the array from client side js
-      //look in database for the items matching those ids
-      // send the ordered items to the confirm order and chef dashboard
+      let orderObj = JSON.parse(req.body.orders).map((x) => ({ _id: x }));
+      const order = Items.find({ $or: orderObj });
+      res.render("confirm.ejs", {
+        order: order,
+        user: req.user,
+      });
     } catch (err) {
       console.log(`ORDER CONTROLLER ${err}`);
     }

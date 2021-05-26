@@ -6,10 +6,11 @@ let orderArr = [];
 function addOrder(e) {
   const orderId = e.target.value;
   if (orderArr.includes(orderId)) {
-    orderArr.splice(orderArr.indexOf(orderId));
+    orderArr.splice(orderArr.indexOf(orderId), orderArr.indexOf(orderId) + 1);
   } else {
     orderArr.push(orderId);
   }
-  console.log(orderArr);
-  return orderArr;
+
+  document.getElementById("orders").value = JSON.stringify(orderArr);
+  console.log(document.getElementById("orders").value);
 }
