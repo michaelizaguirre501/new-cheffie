@@ -5,6 +5,7 @@ module.exports = {
     try {
       const items = await Items.find().lean();
       res.render("dashboard.ejs", { items: items, user: req.user });
+      console.log(items);
     } catch (err) {
       console.log(err);
     }
