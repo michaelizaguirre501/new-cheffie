@@ -2,6 +2,7 @@ const cards = document.querySelectorAll(".orderCards");
 cards.forEach((x) => x.addEventListener("click", addOrder));
 
 let orderArr = [];
+
 function addOrder(e) {
   const orderId = e.target.value;
   if (orderArr.includes(orderId)) {
@@ -12,5 +13,3 @@ function addOrder(e) {
   console.log(orderArr);
   return orderArr;
 }
-
-export default orderArr;
