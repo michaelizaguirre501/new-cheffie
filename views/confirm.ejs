@@ -2,7 +2,12 @@
 <div></div>
 <h2>Confirming order</h2>
 <% for( let i = 0; i < order.length; i++ ){%>
-<h1><%=order[i].name%></h1>
+<div>
+  <h2><%=order[i].name%></h2>
+  <p><%=order[i].course%></p>
+  <p hidden><%=order[i]._id%></p>
+  <button>X</button>
+</div>
 <% } %>
 <div></div>
 <%- include('partials/footer') -%>
