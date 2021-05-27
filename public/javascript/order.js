@@ -10,7 +10,5 @@ function addOrder(e) {
   } else {
     orderArr.push(orderId);
   }
-
   document.getElementById("orders").value = JSON.stringify(orderArr);
-  console.log(document.getElementById("orders").value);
 }
