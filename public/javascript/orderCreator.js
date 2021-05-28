@@ -1,3 +1,3 @@
 console.log(document.querySelectorAll("#orderItemId").innerHTML);
 
-//all divs that dont have the class hidden send the spans from them into an input for a form like sending th original order.
+//if confirming choices pull all span values and add to input value and create orders object

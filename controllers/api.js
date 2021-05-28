@@ -10,4 +10,12 @@ module.exports = {
       console.log(`ORDER CONTROLLER ${err}`);
     }
   },
+
+  confirmOrder: async (req, res) => {
+    try {
+      console.log("working confirmOrder");
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };

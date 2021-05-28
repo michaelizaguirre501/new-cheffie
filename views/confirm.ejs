@@ -9,11 +9,11 @@
 </div>
 <% } %>
 
-<a href="/dashboard">Whoops, Go back.</a>
+<a href="/dashboard" class="btn btn-primary">Whoops, Go back.</a>
 
 <form action="/api/confirmOrder" method="POST">
   <input id="confirm" name="confirm" type="text" hidden />
-  <button type="submit">SUBMIT</button>
+  <button type="submit" class="btn btn-primary mt-2">Looks good</button>
 </form>
 <script src="/javascript/orderCreator.js"></script>
 <%- include('partials/footer') -%>
