@@ -1,13 +1,19 @@
 <%- include('partials/header') -%>
-<div></div>
+
 <h2>Confirming order</h2>
 <% for( let i = 0; i < order.length; i++ ){%>
-<div>
+<div class="orderContainer">
   <h2><%=order[i].name%></h2>
   <p><%=order[i].course%></p>
-  <p hidden><%=order[i]._id%></p>
-  <button>X</button>
+  <span id="orderItemId" hidden><%=order[i]._id%></span>
 </div>
 <% } %>
-<div></div>
+
+<a href="/dashboard">Whoops, Go back.</a>
+
+<form action="/api/confirmOrder" method="POST">
+  <input id="confirm" name="confirm" type="text" hidden />
+  <button type="submit">SUBMIT</button>
+</form>
+<script src="/javascript/orderCreator.js"></script>
 <%- include('partials/footer') -%>
