@@ -1,3 +1,10 @@
-console.log(document.querySelectorAll("#orderItemId").innerHTML);
+const confirmingIds = [];
+document.querySelector("#confirmBtn").addEventListener("click", confirmOrder);
 
-//if confirming choices pull all span values and add to input value and create orders object
+console.log(confirmingIds);
+
+function confirmOrder(e) {
+  const ids = document.querySelectorAll("#orderItemId");
+  ids.forEach((x, i) => confirmingIds.push(x.innerText));
+  document.getElementById("confirmInput").value = JSON.stringify(confirmingIds);
+}

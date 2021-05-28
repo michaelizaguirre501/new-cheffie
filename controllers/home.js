@@ -6,4 +6,8 @@ module.exports = {
   getCreateForm: (req, res) => {
     res.render("createItem.ejs");
   },
+
+  getThankYou: (req, res) => {
+    res.render("thankYou.ejs");
+  },
 };

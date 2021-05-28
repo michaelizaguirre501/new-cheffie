@@ -1,19 +1,35 @@
 const Items = require("../models/Items");
+const Order = require("../models/Order");
 
 module.exports = {
   addOrder: async (req, res) => {
     try {
       let orderObj = JSON.parse(req.body.orders);
       const order = await Items.find({ _id: { $in: orderObj } }).lean();
-      res.render("confirm.ejs", { order: order });
+      res.render("confirm.ejs", { order: order, user: req.user });
     } catch (err) {
       console.log(`ORDER CONTROLLER ${err}`);
     }
   },
 
   confirmOrder: async (req, res) => {
+    let orderIds = JSON.parse(req.body.confirm);
     try {
-      console.log("working confirmOrder");
+      await Order.create({
+        user: req.user.userName,
+        itemIds: orderIds,
+        createdAt: Date().toLocaleString(),
+      }),
+        res.render("thankYou.ejs");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  getOrder: async (req, res) => {
+    try {
+      const orders = await Order.find().lean();
+      res.render("chefDash.ejs", { orders: orders });
     } catch (err) {
       console.log(err);
     }
