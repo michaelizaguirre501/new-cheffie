@@ -28,8 +28,8 @@ module.exports = {
 
   getOrder: async (req, res) => {
     try {
-      const orders = await Order.find().lean();
-      res.render("chefDash.ejs", { orders: orders });
+      const orders = await Orders.find().lean();
+      res.send("createItem.ejs", { orders: orders });
     } catch (err) {
       console.log(err);
     }
