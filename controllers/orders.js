@@ -29,7 +29,8 @@ module.exports = {
   getOrder: async (req, res) => {
     try {
       const orders = await Orders.find().lean();
-      res.send("createItem.ejs", { orders: orders });
+      res.render("createItem.ejs", { orders: orders });
+      console.log(orders);
     } catch (err) {
       console.log(err);
     }

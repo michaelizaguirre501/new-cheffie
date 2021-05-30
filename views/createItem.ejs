@@ -13,6 +13,11 @@
     <button type="submit">Submit</button>
   </form>
 </div>
-<% for( let i = 0; i < orders.length; i++ ) { %>
-<h2><%=orders[i]%></h2>
-<% } %> <%- include('partials/footer') -%>
+
+<% if (!orders) { %>
+<h3>No orders</h3>
+<% }else{ %> <% for( let i = 0; i < orders.length; i++ ) { %>
+<h2><%=orders[i].itemIds%></h2>
+
+<h2><%=orders[i].createdAt%></h2>
+<% } %> <% } %> <%- include('partials/footer') -%>
