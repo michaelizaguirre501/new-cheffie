@@ -37,8 +37,18 @@ module.exports = {
         ingredients: req.body.ingredients,
         course: req.body.course,
       });
-      console.log(req.body.name);
       res.redirect("/dashboard");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  deleteItem: async (req, res) => {
+    try {
+      const item = await Items.findById({ _id: req.params.id });
+      await Items.remove(item);
+      console.log(`Item ${item} removed`);
+      res.redirect("back");
     } catch (err) {
       console.log(err);
     }

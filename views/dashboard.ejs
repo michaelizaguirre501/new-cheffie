@@ -15,13 +15,14 @@
     style="width: 70%; margin: auto"
   >
     <% for(var i=0; i < items.length; i++) {%>
+
     <div class="card mb-5" style="width: 15rem">
       <img class="card-img-top" src="/images/logo.png" alt="Card image cap" />
       <div class="card-body">
         <h5 class="card-title"><%= items[i].name%></h5>
         <p class="card-text"><%= items[i].desc%></p>
         <p class="card-text"><%= items[i].course%></p>
-        <button class="orderCards" value="<%= items[i]._id%>">
+        <button class="orderCards btn btn-primary" value="<%= items[i]._id%>">
           Add/Remove from order
         </button>
       </div>
