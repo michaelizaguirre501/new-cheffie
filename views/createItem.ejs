@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
 <div class="mt-5">
   <h2>Add an Item</h2>
-  <form action="/createItem" method="POST">
+  <form action="/items/createItem" method="POST">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" />
     <label for="desc">Describe your Dish</label>
@@ -13,11 +13,16 @@
     <button type="submit">Submit</button>
   </form>
 </div>
-
 <% if (!orders) { %>
 <h3>No orders</h3>
-<% }else{ %> <% for( let i = 0; i < orders.length; i++ ) { %>
-<h2><%=orders[i].itemIds%></h2>
+<% }else{ for( let i = 0; i < orders.length; i++ ) { %>
+  <div>
+<h3><%=orders[i].user%> %></h3>
+<% orders[i].itemIds.forEach((x,y)=>{ %>
+<h3><%=orders[i].itemIds[y].name %></h3>
+<h5><%=orders[i].itemIds[y].course %></h3>
+<% }) %>
 
 <h2><%=orders[i].createdAt%></h2>
-<% } %> <% } %> <%- include('partials/footer') -%>
+</div>
+<% }} %> <%- include('partials/footer') -%>
