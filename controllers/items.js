@@ -11,21 +11,21 @@ module.exports = {
     }
   },
   getCreateForm: async (req, res) => {
-    try {
-      const orders = await Order.find().lean();
-      //for each order element there is an array of item ids need to find
-      //the items that match those ids
-      //need to send the user and item names for each order to the view
-
-      for (let order of orders) {
-        order.itemIds = await Promise.all(
-          order.itemIds.map((itemId) => Items.findById(itemId))
-        );
+    if (req.user.isAdmin) {
+      try {
+        const orders = await Order.find().lean();
+        for (let order of orders) {
+          order.itemIds = await Promise.all(
+            order.itemIds.map((itemId) => Items.findById(itemId))
+          );
+        }
+        console.log(orders.map((order) => order.itemIds));
+        res.render("createItem.ejs", { orders });
+      } catch (err) {
+        console.log(`ITEMS CONTROLLER ${err}`);
       }
-      console.log(orders.map((order) => order.itemIds));
-      res.render("createItem.ejs", { orders });
-    } catch (err) {
-      console.log(`ITEMS CONTROLLER ${err}`);
+    } else {
+      res.redirect("/dashboard");
     }
   },
 

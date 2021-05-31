@@ -17,12 +17,12 @@
 <h3>No orders</h3>
 <% }else{ for( let i = 0; i < orders.length; i++ ) { %>
   <div>
-<h3><%=orders[i].user%> %></h3>
+<h3>Ordered by : <%=orders[i].user%> %></h3>
 <% orders[i].itemIds.forEach((x,y)=>{ %>
 <h3><%=orders[i].itemIds[y].name %></h3>
 <h5><%=orders[i].itemIds[y].course %></h3>
 <% }) %>
 
-<h2><%=orders[i].createdAt%></h2>
+<h2><%=orders[i].createdAt.substr(0,orders[i].createdAt.indexOf('GMT'))%></h2>
 </div>
 <% }} %> <%- include('partials/footer') -%>
