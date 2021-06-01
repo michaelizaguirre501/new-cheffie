@@ -20,7 +20,7 @@ module.exports = {
             order.itemIds.map((itemId) => Items.findById(itemId))
           );
         }
-        console.log(orders.map((order) => order.itemIds));
+        console.table(orders.map((order) => order.itemIds));
         res.render("createItem.ejs", { orders });
       } catch (err) {
         console.log(`ITEMS CONTROLLER ${err}`);
