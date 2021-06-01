@@ -11,4 +11,5 @@ function addOrder(e) {
     orderArr.push(orderId);
   }
   document.getElementById("orders").value = JSON.stringify(orderArr);
+  e.path[2].classList.toggle("theForce");
 }
