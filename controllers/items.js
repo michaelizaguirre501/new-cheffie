@@ -5,19 +5,19 @@ module.exports = {
   getMenu: async (req, res) => {
     try {
       const items = await Items.find().lean();
-      // const courses = { Starter: [], Main: [], Side-dish: [], Dessert: [] };
-      // const formattedItems = items.reduce((items, item) => {
-      //   courses[item.course].push(item);
-      //   return items;
-      // }, courses);
-      // const orderedCourses = [
-      //   ...formattedItems.starter,
-      //   ...formattedItems.main,
-      //   ...formattedItems.sideDish,
-      //   ...formattedItems.dessert,
-      // ];
-      console.log("fuck you");
-      res.render("dashboard.ejs", { items: items, user: req.user });
+      const courses = { Starter: [], Main: [], "Side-dish": [], Dessert: [] };
+      const formattedItems = items.reduce((items, item) => {
+        items[item.course].push(item);
+        return items;
+      }, courses);
+      const orderedCourses = [
+        ...formattedItems.Starter,
+        ...formattedItems.Main,
+        ...formattedItems["Side-dish"],
+        ...formattedItems.Dessert,
+      ];
+
+      res.render("dashboard.ejs", { items: orderedCourses, user: req.user });
     } catch (err) {
       console.log(err);
     }

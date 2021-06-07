@@ -56,6 +56,12 @@ app.use(passport.session());
 //Use flash messages for errors, info, ect...
 app.use(flash());
 
+//Make logged in user object available to all templates
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
 app.use("/items", itemsRoutes);
