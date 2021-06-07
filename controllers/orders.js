@@ -19,6 +19,7 @@ module.exports = {
         user: req.user.userName,
         itemIds: orderIds,
         createdAt: Date().toLocaleString(),
+        notes: req.body.notes,
       }),
         res.render("thankYou.ejs");
     } catch (err) {
@@ -26,11 +27,12 @@ module.exports = {
     }
   },
 
-  getOrder: async (req, res) => {
+  deleteOrder: async (req, res) => {
     try {
-      const orders = await Orders.find().lean();
-      res.render("createItem.ejs", { orders: orders });
-      console.log(orders);
+      const order = await Order.findById({ _id: req.params.id });
+      await Order.deleteOne(order);
+      console.log("order removed");
+      res.redirect("back");
     } catch (err) {
       console.log(err);
     }

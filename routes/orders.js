@@ -5,6 +5,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.post("/addOrder", ensureAuth, ordersController.addOrder);
 router.post("/confirmOrder", ensureAuth, ordersController.confirmOrder);
-router.get("/confirmOrder", ensureAuth, ordersController.getOrder);
+router.delete("/deleteOrder/:id", ensureAuth, ordersController.deleteOrder);
 
 module.exports = router;

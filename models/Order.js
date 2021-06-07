@@ -11,6 +11,9 @@ const OrderSchema = new mongoose.Schema({
   createdAt: {
     type: String,
   },
+  notes: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

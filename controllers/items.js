@@ -5,7 +5,18 @@ module.exports = {
   getMenu: async (req, res) => {
     try {
       const items = await Items.find().lean();
-      console.log(items);
+      // const courses = { Starter: [], Main: [], Side-dish: [], Dessert: [] };
+      // const formattedItems = items.reduce((items, item) => {
+      //   courses[item.course].push(item);
+      //   return items;
+      // }, courses);
+      // const orderedCourses = [
+      //   ...formattedItems.starter,
+      //   ...formattedItems.main,
+      //   ...formattedItems.sideDish,
+      //   ...formattedItems.dessert,
+      // ];
+      console.log("fuck you");
       res.render("dashboard.ejs", { items: items, user: req.user });
     } catch (err) {
       console.log(err);
@@ -20,7 +31,13 @@ module.exports = {
             order.itemIds.map((itemId) => Items.findById(itemId))
           );
         }
-        console.table(orders.map((order) => order.itemIds));
+        const ingredientsArray = orders.map((orders) => {
+          return orders.name;
+        });
+
+        console.log(orders.map((order) => order.itemIds));
+
+        //for each order in orders create array with ordered item ingredients && create array of ordered item names
         res.render("createItem.ejs", { orders });
       } catch (err) {
         console.log(`ITEMS CONTROLLER ${err}`);
