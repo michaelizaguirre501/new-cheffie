@@ -7,10 +7,6 @@ a {
   color: #0698fa;
 }
 
-.nav-item {
-  font-size: 1.5rem;
-}
-
 .signup-form {
   width: 20%;
   margin: 3rem auto;
@@ -27,4 +23,10 @@ a {
 
 .theForce {
   border: 3px solid rgb(235, 122, 16) !important;
+}
+
+@media only screen and(max-width:991px) {
+  .nav-items {
+    display: none;
+  }
 }

@@ -31,11 +31,6 @@ module.exports = {
             order.itemIds.map((itemId) => Items.findById(itemId))
           );
         }
-        const ingredientsArray = orders.map((orders) => {
-          return orders.name;
-        });
-
-        console.log(orders.map((order) => order.itemIds));
 
         //for each order in orders create array with ordered item ingredients && create array of ordered item names
         res.render("createItem.ejs", { orders });
@@ -55,7 +50,7 @@ module.exports = {
         ingredients: req.body.ingredients,
         course: req.body.course,
       });
-      res.redirect("/dashboard");
+      res.redirect("back");
     } catch (err) {
       console.log(err);
     }
