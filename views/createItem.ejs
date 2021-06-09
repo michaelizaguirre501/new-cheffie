@@ -42,7 +42,7 @@
     mt-5
   "
 >
-  <div class="card" style="width: 30rem">
+  <div class="card" style="width: 30rem; margin: 0 auto">
     <div class="card-body">
       <h3 class="card-title" style="border-bottom: 1px solid black">
         Ordered by : <%=orders[i].user[0].toUpperCase()+
@@ -74,12 +74,17 @@
 </div>
 <%}}%>
 
-<div id="counts">
-  <% for (let item of Object.keys(counts)){ %>
-  <p><%= counts[item].name %></p>
-  <p><%= counts[item].count %></p>
-  <p><%= counts[item].ingredients %></p>
-  <% } %>
+<div class="card" id="counts" style="width: 50%; margin: 0 auto">
+  <div style="text-align: center; width: 80%; margin: 0 auto">
+    <h2>Shopping list</h2>
+    <% for (let item of Object.keys(counts)){ %>
+    <h4><%= counts[item].name %></h4>
+    <strong>Total current orders-<%= counts[item].count %></strong>
+    <p style="border-bottom: 1px solid black; margin-top: 5px">
+      <%= counts[item].ingredients %>
+    </p>
+    <% } %>
+  </div>
 </div>
 
 <%- include('partials/footer') -%>

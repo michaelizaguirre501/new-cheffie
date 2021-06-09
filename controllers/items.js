@@ -32,8 +32,7 @@ module.exports = {
           );
         }
 
-        //for each order in orders create array with ordered item ingredients && create array of ordered item names
-
+        // create an object with order.itemIds.names and ingredients while counting duplicates to be sent to ejs as counts
         const counts = orders.reduce((acc, order) => {
           order.itemIds.forEach((item) => {
             acc[item.id] = acc[item.id] || {};
@@ -44,11 +43,6 @@ module.exports = {
           return acc;
         }, {});
 
-        // let ingredientsArray = orders.map((orders) => ({
-        //   name: orders.name,
-        //   ingredients: orders.ingredients,
-        //   timesOrdered: "the amount of times this appears in the array",
-        // }));
         res.render("createItem.ejs", { orders, counts });
       } catch (err) {
         console.log(`ITEMS CONTROLLER ${err}`);
