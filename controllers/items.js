@@ -33,7 +33,24 @@ module.exports = {
         }
 
         //for each order in orders create array with ordered item ingredients && create array of ordered item names
-        res.render("createItem.ejs", { orders });
+
+        const counts = orders.reduce((acc, order) => {
+          order.itemIds.forEach((item) => {
+            acc[item.id] = acc[item.id] || {};
+            acc[item.id].name = item.name;
+            acc[item.id].count = (acc[item.id].count || 0) + 1;
+            acc[item.id].ingredients = item.ingredients;
+          });
+          return acc;
+        }, {});
+
+        // let ingredientsArray = orders.map((orders) => ({
+        //   name: orders.name,
+        //   ingredients: orders.ingredients,
+        //   timesOrdered: "the amount of times this appears in the array",
+        // }));
+        console.log(counts);
+        res.render("createItem.ejs", { orders, counts });
       } catch (err) {
         console.log(`ITEMS CONTROLLER ${err}`);
       }

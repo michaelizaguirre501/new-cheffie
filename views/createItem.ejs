@@ -72,5 +72,14 @@
     </div>
   </div>
 </div>
+<%}}%>
 
-<%}}%><%- include('partials/footer') -%>
+<div id="counts">
+  <% for (let item of Object.keys(counts)){ %>
+  <p><%= counts[item].name %></p>
+  <p><%= counts[item].count %></p>
+  <p><%= counts[item].ingredients %></p>
+  <% } %>
+</div>
+
+<%- include('partials/footer') -%>
