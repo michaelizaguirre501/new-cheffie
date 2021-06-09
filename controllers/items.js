@@ -49,7 +49,6 @@ module.exports = {
         //   ingredients: orders.ingredients,
         //   timesOrdered: "the amount of times this appears in the array",
         // }));
-        console.log(counts);
         res.render("createItem.ejs", { orders, counts });
       } catch (err) {
         console.log(`ITEMS CONTROLLER ${err}`);
