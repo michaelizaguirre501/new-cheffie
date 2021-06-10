@@ -1,22 +1,41 @@
 <%- include('partials/header') -%>
 
-<h2>Confirming order</h2>
-<% for( let i = 0; i < order.length; i++ ){%>
-<div class="orderContainer">
-  <h2><%=order[i].name%></h2>
-  <p><%=order[i].course%></p>
-  <span id="orderItemId" hidden><%=order[i]._id%></span>
+<h2 class="mx-auto text-center mt-5">Confirm your order</h2>
+<div class="card w-50 mx-auto mt-5 pt-4">
+  <% for( let i = 0; i < order.length; i++ ){%>
+  <div class="orderContainer text-center">
+    <h2><%=order[i].name%></h2>
+    <p><%=order[i].course%></p>
+    <span id="orderItemId" hidden><%=order[i]._id%></span>
+  </div>
+  <% } %>
+
+  <form action="/orders/confirmOrder" method="POST">
+    <input id="confirmInput" name="confirm" type="text" hidden />
+    <div class="mt-3">
+      <textarea
+        type="text"
+        name="notes"
+        id="notes"
+        rows="3"
+        placeholder="Add notes or special requests for the Chef here..."
+        style="text-align: center; width: 50%; display: block; margin: 0 auto"
+      ></textarea>
+    </div>
+
+    <div class="container mt-5 mb-3 text-center">
+      <a href="/dashboard" class="btn btn-primary">Whoops, Go back.</a>
+      <button
+        style="margin-left: 0.5rem"
+        id="confirmBtn"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Looks good
+      </button>
+    </div>
+  </form>
 </div>
-<% } %>
 
-<a href="/dashboard" class="btn btn-primary">Whoops, Go back.</a>
-
-<form action="/orders/confirmOrder" method="POST">
-  <input id="confirmInput" name="confirm" type="text" hidden />
-  <textarea type="text" name="notes" id="notes" rows="3"></textarea>
-  <button id="confirmBtn" type="submit" class="btn btn-primary mt-2">
-    Looks good
-  </button>
-</form>
 <script src="/javascript/orderCreator.js"></script>
 <%- include('partials/footer') -%>

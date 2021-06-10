@@ -1,0 +1,112 @@
+<%- include('partials/header') -%>
+
+<!--@Current Orders-->
+<div class="parent-container d-flex flex-wrap justify-content-around mt-5">
+  <% if (!orders) { %>
+  <h3>No orders</h3>
+  <% }else{ for( let i = 0; i < orders.length; i++ ) { %>
+
+  
+    <div class="card justify-content-around mb-5" style='width:30rem'>
+      <div class="card-body">
+        <h3 class="card-title" style="border-bottom: 1px solid black">
+          Ordered by : <%=orders[i].user[0].toUpperCase()+
+          orders[i].user.substr(1) %>
+        </h3>
+        <% orders[i].itemIds.forEach((x,y)=>{ %> <% if (!orders[i].itemIds[y]) {
+        %>
+        <h3>Item Unavailable</h3>
+        <% } %>
+
+        <h3><%=orders[i].itemIds[y].name %></h3>
+        <h5 class="card-subtitle mb-2 text-muted">
+          <%=orders[i].itemIds[y].course %>
+        </h5>
+
+        <% }) %>
+        <h3>
+          Notes:
+          <p style="color: red"><%=orders[i].notes||'None'%></p>
+        </h3>
+        <h2>
+          <%=orders[i].createdAt.substr(0,orders[i].createdAt.indexOf('GMT'))%>
+        </h2>
+        <form
+          action="/orders/deleteOrder/<%= orders[i]._id %>?_method=DELETE"
+          method="POST"
+          class="col-3"
+        >
+          <button class="btn btn-primary mt-2" type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+
+
+  <%}}%>
+</div>
+</div>
+<!--@Shopping list-->
+<div class="parent-container d-flex mt-5">
+  <div class="container">
+    <div class="col">
+      <div class="card text-center" id="counts">
+        <h2 >Shopping list</h2>
+        <% for (let item of Object.keys(counts)){ %>
+        <h4><%= counts[item].name %></h4>
+        <strong style="font-size: 1.3rem;">Total current orders-<%= counts[item].count %></strong>
+        <p style="border-bottom: 1px solid black; margin-top: 5px; font-size:1.3rem; padding-bottom: 10px; width:80%; margin:10px auto;">
+          <%= counts[item].ingredients %>
+        </p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--@Add Menu Item-->
+<div class="container w-80">
+  <div class="mt-5 form-group">
+    <h2>Add an Item</h2>
+    <form action="/items/createItem" method="POST">
+      <label for="name">Name</label>
+      <textarea
+        class="form-control"
+        type="text"
+        name="name"
+        id="name"
+        rows="1"
+      ></textarea>
+      <label for="desc">Describe your Dish</label>
+      <textarea
+        class="form-control"
+        type="text"
+        name="desc"
+        id="desc"
+        rows="3"
+      ></textarea>
+      <label for="ingredients">List ingredients</label>
+      <textarea
+        type="text"
+        class="form-control"
+        name="ingredients"
+        id="ingredients"
+        rows="3"
+      ></textarea>
+      <label for="course">Which course is your dish</label>
+      <select
+        name="course"
+        class="form-select form-control"
+        aria-label="Default select example"
+        style="width: 30%"
+      >
+        <option selected value="Starter">Starter</option>
+        <option value="Main">Main</option>
+        <option value="Side-dish">Side-dish</option>
+        <option value="Dessert">Dessert</option>
+      </select>
+      <button class='btn btn-primary mt-2' type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

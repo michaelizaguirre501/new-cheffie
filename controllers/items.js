@@ -43,7 +43,7 @@ module.exports = {
           return acc;
         }, {});
 
-        res.render("createItem.ejs", { orders, counts });
+        res.render("chef-dashboard.ejs", { orders, counts });
       } catch (err) {
         console.log(`ITEMS CONTROLLER ${err}`);
       }
