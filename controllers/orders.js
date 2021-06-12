@@ -37,4 +37,19 @@ module.exports = {
       console.log(err);
     }
   },
+  userOrders: async (req, res) => {
+    try {
+      const orders = await Order.find({ user: req.user.userName });
+      for (let order of orders) {
+        order.itemIds = await Promise.all(
+          order.itemIds.map((itemId) => Items.findById(itemId))
+        );
+      }
+      console.log(orders);
+      console.log("order for user found");
+      res.render("myOrders", { orders });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };

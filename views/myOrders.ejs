@@ -1,0 +1,47 @@
+<%- include('partials/header') -%>
+
+<% if (!orders) { %>
+    <h3>No orders</h3>
+    <% }else{ for( let i = 0; i < orders.length; i++ ) { %>
+  
+    
+      <div class="card justify-content-around mb-5" style='width:30rem'>
+        <div class="card-body">
+          <h3 class="card-title" style="border-bottom: 1px solid black">
+            Ordered by : <%=orders[i].user[0].toUpperCase()+
+            orders[i].user.substr(1) %>
+          </h3>
+          <% orders[i].itemIds.forEach((x,y)=>{ %> <% if (!orders[i].itemIds[y]) {
+          %>
+          <h3>Item Unavailable</h3>
+          <% } %>
+  
+          <h3><%=orders[i].itemIds[y].name %></h3>
+          <h5 class="card-subtitle mb-2 text-muted">
+            <%=orders[i].itemIds[y].course %>
+          </h5>
+  
+          <% }) %>
+          <h3>
+            Notes:
+            <p style="color: red"><%=orders[i].notes||'None'%></p>
+          </h3>
+          <h2>
+            <%=orders[i].createdAt.substr(0,orders[i].createdAt.indexOf('GMT'))%>
+          </h2>
+          <form
+            action="/orders/deleteOrder/<%= orders[i]._id %>?_method=DELETE"
+            method="POST"
+            class="col-3"
+          >
+            <button class="btn btn-primary mt-2" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+  
+  
+    <%}}%>
+  </div>
+  </div>
+
+<%- include('partials/footer') -%>
