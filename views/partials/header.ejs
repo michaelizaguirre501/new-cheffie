@@ -29,7 +29,7 @@
               <li><a class="dropdown-item" href="/login">Sign in</a></li>
                 <li><a class="dropdown-item" href="/dashboard">Menu</a></li>
               
-                <% if (user?.) { %>
+                <% if (user) { %>
                 <li><a class="dropdown-item" href="/orders/myOrders">Your Orders</a></li>
                 <% } %>
                 <% if (user?.isAdmin) { %>
