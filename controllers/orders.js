@@ -45,9 +45,9 @@ module.exports = {
           order.itemIds.map((itemId) => Items.findById(itemId))
         );
       }
-      console.log(orders);
-      console.log("order for user found");
-      res.render("myOrders", { orders });
+
+      console.log(`orders for ${req.user.userName} found`);
+      res.render("myOrders.ejs", { orders });
     } catch (err) {
       console.log(err);
     }

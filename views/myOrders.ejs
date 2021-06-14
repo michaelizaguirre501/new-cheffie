@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
 
-<div class='mt-3' style='margin-left:5rem'>
-    <h1>Your current orders</h1>
+<div class='mt-5' style='margin-left:5rem'>
+    <h1 class='mb-5'>Your current orders</h1>
 <% if (!orders) { %>
     <h3>No orders</h3>
     <% }else{ for( let i = 0; i < orders.length; i++ ) { %>
