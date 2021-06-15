@@ -8,7 +8,7 @@ Check it out live on Heroku [Cheffie](https://cheffie.herokuapp.com/)!
 
 This is a customer account most functionality is designed for the chef which I will show in the walkthrough section below. 
 
-During the pandemic I while learning programming, I worked as a private chef. In that time I was sharing menus for the family I worked for over google docs.
+During the pandemic I, while learning programming, worked as a private chef. In that time I was sharing menus for the family I worked for over google docs.
 I wanted to create a UI for a chef to upload their menu with photos and  ingredients list for their customer to choose from. Once a customer places an order the chef
 will get an updated shopping list consisting of all ordered menu items with a current count and the ingredients that the chef has provided.
 If I had this web application when I was working it would of made my life much easier which was the driving force behind this project.
@@ -38,7 +38,7 @@ The items ordered by customers get displayed as cards for the chef. Cards contai
 #### Shopping List 
 ![Shopping list](https://res.cloudinary.com/cheffie/image/upload/v1623774895/shopping_list_kj1xun.png)
 
-The shopping list automatically gets a count of all ordered items and lists the ingredients that the chef has entered. The chef has the freedom to choose how they enter their ingredients and only the chef is able to see them. Every chef's recipie book looks different and doing it this way ensure they will have all the information they need to provide the best dishes.
+The shopping list automatically gets a count of all ordered items and lists the ingredients that the chef has entered. The chef has the freedom to choose how they enter their ingredients and only the chef is able to see them. Every chef's recipie book looks different and doing it this way will ensure they will have all the information they need to provide the best dishes.
 
 #### Add Item Form
 ![Add item](https://res.cloudinary.com/cheffie/image/upload/v1623775121/additem_u6fca3.png)
@@ -50,7 +50,7 @@ Simple form to add item. Communicates with an model (item schema) and controller
 #### Menu
 ![Menu](https://res.cloudinary.com/cheffie/image/upload/v1623775447/menu_gvp1bz.png)
 
-This page is available to chefs and customers, and only the chef has the delete button and the ability to delete items
+This page is available to chefs and customers, only the chef has the delete button and the ability to delete items.
 All items can be uploaded with or without images, the items are sorted by the course that they have been set to. At the time of writing the courses are: Starter, Main, Side-dish and Dessert. If the chef was to have a full menu and add a starter it would appear with the rest of the starters for example.
 
 #### Confirming your order
@@ -68,7 +68,7 @@ CSS needs an overhaul, or possible refactoring into react.
 Possible Reset button which would remove all menu items and orders, which would be useful to start a new week, but possibly bad if the chef changes their mind, or doesn't complete an order. 
 
 ## Thanks for reading
-[LinkedIn](https://www.linkedin.com/in/michaelizaguirrewebdev/)!
+Contact me on [LinkedIn](https://www.linkedin.com/in/michaelizaguirrewebdev/) 
 
 
 <!-- Restaurant quality food delivered right to your door -->
