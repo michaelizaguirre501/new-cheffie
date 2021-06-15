@@ -2,7 +2,7 @@
 
 Check it out live on Heroku [Cheffie](https://cheffie.herokuapp.com/)!
 
-### Demo Accounts
+### Demo Account
 - username: cust@cust.com
 - password: 12345678
 
