@@ -17,6 +17,14 @@ const ItemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: false,
+  },
+  cloudinaryId: {
+    type: String,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("Items", ItemSchema);

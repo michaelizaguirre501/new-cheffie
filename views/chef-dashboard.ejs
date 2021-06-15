@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
 
 <!--@Current Orders-->
-<div class="parent-container d-flex flex-wrap justify-content-around mt-5">
+<div class="parent-container d-flex flex-wrap justify-content-around mt-5" >
   <% if (!orders) { %>
   <h3>No orders</h3>
   <% }else{ for( let i = 0; i < orders.length; i++ ) { %>
@@ -67,7 +67,7 @@
 <div class="container w-80">
   <div class="mt-5 form-group">
     <h2>Add an Item</h2>
-    <form action="/items/createItem" method="POST">
+    <form action="/items/createItem" enctype="multipart/form-data" method="POST">
       <label for="name">Name</label>
       <textarea
         class="form-control"
@@ -104,6 +104,8 @@
         <option value="Side-dish">Side-dish</option>
         <option value="Dessert">Dessert</option>
       </select>
+      <label for="imgUpload" class="form-label">Image(not required)</label>
+      <input type="file" class="form-control" id="imageUpload" name="file">
       <button class='btn btn-primary mt-2' type="submit">Submit</button>
     </form>
   </div>

@@ -14,12 +14,13 @@
       flex-wrap
       mt-5
     "
-    style="width: 70%; margin: auto"
+    style="width: 76%; margin: auto"
   >
     <% for(var i=0; i < items.length; i++) {%>
 
-    <div class="card mb-5" style="width: 15rem">
-      <img class="card-img-top" src="/images/logo.png" alt="Card image cap" />
+    <div class="card mb-5" style="width: 17rem">
+      <img style='outline:1px solid black; height:55%' class="card-img-top"
+      src=<%=items[i].image ||"/images/logo.png"%> alt="Card image cap" />
       <div class="card-body">
         <h5 class="card-title"><%= items[i].name%></h5>
         <p class="card-text"><%= items[i].desc%></p>
@@ -47,7 +48,7 @@
   <button
     class="btn btn-primary"
     type="submit"
-    style="width: 10%; margin: 0 auto; display: block"
+    style="margin: 0 auto; display: block; padding: 10px"
   >
     Submit Order
   </button>

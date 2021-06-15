@@ -1,3 +1,4 @@
+const cloudinary = require("../middleware/cloudinary");
 const Items = require("../models/Items");
 const Order = require("../models/Order");
 
@@ -54,12 +55,24 @@ module.exports = {
 
   createItem: async (req, res) => {
     try {
-      await Items.create({
-        name: req.body.name,
-        desc: req.body.desc,
-        ingredients: req.body.ingredients,
-        course: req.body.course,
-      });
+      if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        await Items.create({
+          name: req.body.name,
+          desc: req.body.desc,
+          ingredients: req.body.ingredients,
+          course: req.body.course,
+          image: result.secure_url,
+          cloudinaryId: result.public_id,
+        });
+      } else {
+        await Items.create({
+          name: req.body.name,
+          desc: req.body.desc,
+          ingredients: req.body.ingredients,
+          course: req.body.course,
+        });
+      }
       res.redirect("back");
     } catch (err) {
       console.log(err);
