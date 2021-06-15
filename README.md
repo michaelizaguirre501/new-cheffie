@@ -30,7 +30,7 @@ Multer for file uploads and Cloudinary for storage
 ### As a chef
 The chef can find all of the things they need on the chef dashboard, which only displays to the user if they have the isAdmin property on their DataBase user object.
 #### Order cards
-![Order cards](https://imgur.com/LiX5c1O)
+![Order cards](https://imgur.com/a/4OfLKLt)
 The items ordered by customers get displayed as cards for the chef. Cards contain each item ordered, the course they should be served in, the user who ordered them, any user notes, and the time they where ordered.
 
 ####
