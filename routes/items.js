@@ -12,6 +12,6 @@ router.post(
   ensureAuth,
   itemsController.createItem
 );
-router.delete("/deleteItem/:id", ensureAuth, itemsController.deleteItem);
+router.delete("/removeItem/:id", ensureAuth, itemsController.removeItem);
 
 module.exports = router;

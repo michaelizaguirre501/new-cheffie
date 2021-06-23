@@ -14,6 +14,11 @@ const OrderSchema = new mongoose.Schema({
   notes: {
     type: String,
   },
+  fulfilled: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

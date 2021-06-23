@@ -25,6 +25,11 @@ const ItemSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  available: {
+    type: Boolean,
+    default: true,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Items", ItemSchema);

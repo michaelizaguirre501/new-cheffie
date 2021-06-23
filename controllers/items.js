@@ -79,10 +79,13 @@ module.exports = {
     }
   },
 
-  deleteItem: async (req, res) => {
+  removeItem: async (req, res) => {
     try {
-      const item = await Items.findById({ _id: req.params.id });
-      await Items.remove(item);
+      const item = await Items.updateOne(
+        { _id: req.params.id },
+        { available: false }
+      );
+
       console.log(`Item ${item} removed`);
       res.redirect("back");
     } catch (err) {

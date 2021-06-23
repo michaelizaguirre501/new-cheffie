@@ -16,8 +16,7 @@
     "
     style="width: 76%; margin: auto"
   >
-    <% for(var i=0; i < items.length; i++) {%>
-
+    <% for(var i=0; i < items.length; i++) {%> <% if(items[i].available) { %>
     <div class="card mb-5" style="width: 17rem">
       <img style='outline:1px solid black; height:55%' class="card-img-top"
       src=<%=items[i].image ||"/images/logo.png"%> alt="Card image cap" />
@@ -30,7 +29,7 @@
         </button>
         <% if(user.isAdmin){ %>
         <form
-          action="/items/deleteItem/<%= items[i]._id %>?_method=DELETE"
+          action="/items/removeItem/<%= items[i]._id %>?_method=DELETE"
           method="POST"
           class="col-3"
         >
@@ -39,7 +38,7 @@
         <% } %>
       </div>
     </div>
-    <% } %>
+    <% }} %>
   </div>
 </div>
 
