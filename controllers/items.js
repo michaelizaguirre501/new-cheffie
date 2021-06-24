@@ -23,6 +23,27 @@ module.exports = {
       console.log(err);
     }
   },
+
+  getRemovedMenu: async (req, res) => {
+    try {
+      const items = await Items.find({ available: false }).lean();
+      const courses = { Starter: [], Main: [], "Side-dish": [], Dessert: [] };
+      const formattedItems = items.reduce((items, item) => {
+        items[item.course].push(item);
+        return items;
+      }, courses);
+      const orderedCourses = [
+        ...formattedItems.Starter,
+        ...formattedItems.Main,
+        ...formattedItems["Side-dish"],
+        ...formattedItems.Dessert,
+      ];
+
+      res.render("removedItems.ejs", { items: orderedCourses, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getCreateForm: async (req, res) => {
     if (req.user.isAdmin) {
       try {
@@ -64,6 +85,7 @@ module.exports = {
           course: req.body.course,
           image: result.secure_url,
           cloudinaryId: result.public_id,
+          available: true,
         });
       } else {
         await Items.create({
@@ -78,12 +100,37 @@ module.exports = {
       console.log(err);
     }
   },
-
+  //Set item available  to false removing it from the menu page
   removeItem: async (req, res) => {
     try {
       const item = await Items.updateOne(
         { _id: req.params.id },
         { available: false }
+      );
+
+      console.log(`Item ${item} removed`);
+      res.redirect("back");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  //permanently delete menu item from database. This will throw error in orders
+  deleteItem: async (req, res) => {
+    try {
+      const item = await Items.findById({ _id: req.params.id });
+      await Items.deleteOne(item);
+      console.log(`Item ${item} removed`);
+      res.redirect("back");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  //set item availibility to true removing it from removed items page and restoring it to menu
+  restoreItem: async (req, res) => {
+    try {
+      const item = await Items.updateOne(
+        { _id: req.params.id },
+        { available: true }
       );
 
       console.log(`Item ${item} removed`);

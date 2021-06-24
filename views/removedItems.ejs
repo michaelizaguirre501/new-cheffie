@@ -1,0 +1,49 @@
+<%- include('partials/header') -%>
+<h3 style='color:red'>Reminder: Do not delete an item with an unfulfilled order </h3>
+<div class="container">
+  <div
+    class="
+      d-flex
+      flex-row
+      align-content-between
+      justify-content-between
+      flex-wrap
+      mt-5
+    "
+    style="width: 76%; margin: auto"
+  >
+    <% for(var i=0; i < items.length; i++) {%>
+
+    <div class="card mb-5" style="width: 17rem">
+      <img style='outline:1px solid black; height:55%' class="card-img-top"
+      src=<%=items[i].image ||"/images/logo.png"%> alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title"><%= items[i].name%></h5>
+        <p class="card-text"><%= items[i].desc%></p>
+        <p class="card-text"><%= items[i].course%></p>
+        <div class='d-flex flex-row justify-content-between pt-3' style='margin: 0px 50px 0 0;'>
+          <% if(user.isAdmin){ %>
+          <form
+            action="/items/restoreItem/<%= items[i]._id %>?_method=PUT"
+            method="POST"
+            class="col-3"
+          >
+            <button class="btn btn-primary mt-2" type="submit">Restore</button>
+          </form>
+          <form
+            action="/items/deleteItem/<%= items[i]._id %>?_method=DELETE"
+            method="POST"
+            class="col-3"
+          >
+            <button class="btn btn-danger mt-2" type="submit">Delete</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+<footer class="bg-light text-center text-lg-start fixed-bottom mt-5">
+  <%- include('partials/footer') -%>
+
