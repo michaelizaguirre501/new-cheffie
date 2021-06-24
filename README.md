@@ -71,4 +71,4 @@ Possible Reset button which would remove all menu items and orders, which would 
 Contact me on [LinkedIn](https://www.linkedin.com/in/michaelizaguirrewebdev/) 
 
 
-<!-- Restaurant quality food delivered right to your door -->
+<!-- Make orders fulfilable-->
