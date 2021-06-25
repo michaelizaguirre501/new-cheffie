@@ -1,5 +1,7 @@
 <%- include('partials/header') -%>
-<h3 style='color:red'>Reminder: Do not delete an item with an unfulfilled order </h3>
+<h3 style="color: red">
+  Reminder: Do not delete an item with an unfulfilled order
+</h3>
 <div class="container">
   <div
     class="
@@ -21,7 +23,10 @@
         <h5 class="card-title"><%= items[i].name%></h5>
         <p class="card-text"><%= items[i].desc%></p>
         <p class="card-text"><%= items[i].course%></p>
-        <div class='d-flex flex-row justify-content-between pt-3' style='margin: 0px 50px 0 0;'>
+        <div
+          class="d-flex flex-row justify-content-between pt-3"
+          style="margin: 0px 50px 0 0"
+        >
           <% if(user.isAdmin){ %>
           <form
             action="/items/restoreItem/<%= items[i]._id %>?_method=PUT"
@@ -34,6 +39,7 @@
             action="/items/deleteItem/<%= items[i]._id %>?_method=DELETE"
             method="POST"
             class="col-3"
+            onclick="return confirm('This action is irreversible. Would you like to continue?')"
           >
             <button class="btn btn-danger mt-2" type="submit">Delete</button>
           </form>
@@ -44,6 +50,7 @@
     <% } %>
   </div>
 </div>
+
 <footer class="bg-light text-center text-lg-start fixed-bottom mt-5">
   <%- include('partials/footer') -%>
-
+</footer>
