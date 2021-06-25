@@ -27,16 +27,6 @@ module.exports = {
     }
   },
 
-  deleteOrder: async (req, res) => {
-    try {
-      const order = await Order.findById({ _id: req.params.id });
-      await Order.deleteOne(order);
-      console.log("order removed");
-      res.redirect("back");
-    } catch (err) {
-      console.log(err);
-    }
-  },
   userOrders: async (req, res) => {
     try {
       const orders = await Order.find({ user: req.user.userName });
@@ -48,6 +38,30 @@ module.exports = {
 
       console.log(`orders for ${req.user.userName} found`);
       res.render("myOrders.ejs", { orders });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  fulfillOrder: async (req, res) => {
+    try {
+      const order = await Order.findById({ _id: req.params.id });
+      if (order.fulfilled === true) {
+        await Order.updateOne({ _id: req.params.id }, { fulfilled: false });
+      } else {
+        await Order.updateOne({ _id: req.params.id }, { fulfilled: true });
+      }
+      console.log("fulfilled");
+      res.redirect("back");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  deleteOrder: async (req, res) => {
+    try {
+      const order = await Order.findById({ _id: req.params.id });
+      await Order.deleteOne(order);
+      console.log("order removed");
+      res.redirect("back");
     } catch (err) {
       console.log(err);
     }

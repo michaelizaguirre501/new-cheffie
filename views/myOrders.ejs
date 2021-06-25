@@ -34,6 +34,7 @@
             action="/orders/deleteOrder/<%= orders[i]._id %>?_method=DELETE"
             method="POST"
             class="col-3"
+            onclick="return confirm('This action is irreversible. Would you like to continue?')"
           >
             <button class="btn btn-primary mt-2" type="submit">Delete</button>
           </form>

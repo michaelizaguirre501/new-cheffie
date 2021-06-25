@@ -7,11 +7,11 @@
   <% }else{ for( let i = 0; i < orders.length; i++ ) { %>
 
   
-    <div id='order-cards' class="card justify-content-around mb-5" style='width:30rem;'>
-      <div class="card-body">
+    <div id='order-cards' class="card justify-content-around mb-5 " style='width:30rem;'>
+      <div class="card-body <%= orders[i].fulfilled===true?'fulfilled':'' %>">
         <h3 class="card-title" style="border-bottom: 1px solid black">
           Ordered by : <%=orders[i].user[0].toUpperCase()+
-          orders[i].user.substr(1) %>
+          orders[i].user.substr(1) %>          
         </h3>
         <% orders[i].itemIds.forEach((x,y)=>{ %> <% if (!orders[i].itemIds[y]) {
         %>
@@ -31,13 +31,23 @@
         <h2>
           <%=orders[i].createdAt.substr(0,orders[i].createdAt.indexOf('GMT'))%>
         </h2>
+        <h4>Status:<%= orders[i].fulfilled===true?'Fulfilled':'Unfulfilled' %></h4>
         <form
           action="/orders/deleteOrder/<%= orders[i]._id %>?_method=DELETE"
           method="POST"
           class="col-3"
+          onclick="return confirm('This action is irreversible. Would you like to continue?')"
         >
-          <button class="btn btn-primary mt-2" type="submit">Delete</button>
+          <button class="btn btn-danger mt-2" type="submit">Delete</button>
         </form>
+        <form
+          action="/orders/fulfillOrder/<%= orders[i]._id %>?_method=PUT"
+          method="POST"
+          class="col-3"
+        >
+          <button class="btn btn-primary mt-2" type="submit">Fulfill</button>
+        </form>
+      
       </div>
     </div>
 
@@ -45,6 +55,12 @@
   <%}}%>
 </div>
 </div>
+
+
+
+
+
+
 <!--@Shopping list-->
 <div class="parent-container d-flex" style='transform: scale(80%)' >
   <div class="container">
