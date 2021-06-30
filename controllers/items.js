@@ -47,12 +47,7 @@ module.exports = {
   getCreateForm: async (req, res) => {
     if (req.user.isAdmin) {
       try {
-        const orders = await Order.find().lean();
-        for (let order of orders) {
-          order.itemIds = await Promise.all(
-            order.itemIds.map((itemId) => Item.findById(itemId))
-          );
-        }
+        const orders = await Order.find().populate({ path: "itemIds" });
 
         // create an object with order.itemIds.names and ingredients while counting duplicates to be sent to ejs as counts
         const counts = orders.reduce((acc, order) => {

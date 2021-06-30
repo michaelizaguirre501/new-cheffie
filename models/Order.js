@@ -7,7 +7,8 @@ const OrderSchema = new mongoose.Schema(
       required: true,
     },
     itemIds: {
-      type: Array,
+      type: [{ type: mongoose.Types.ObjectId, ref: "Item" }],
+      default: [],
     },
     createdAt: {
       type: String,
