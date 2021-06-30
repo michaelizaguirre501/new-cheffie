@@ -10,6 +10,8 @@ function addOrder(e) {
   } else {
     orderArr.push(orderId);
   }
+  console.log(e);
   document.getElementById("orders").value = JSON.stringify(orderArr);
-  e.path[2].classList.toggle("theForce");
+  e.target.parentElement.parentElement.classList.toggle("theForce") ||
+    e.path[2].classList.toggle("theForce");
 }
