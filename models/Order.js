@@ -10,9 +10,6 @@ const OrderSchema = new mongoose.Schema(
       type: [{ type: mongoose.Types.ObjectId, ref: "Item" }],
       default: [],
     },
-    createdAt: {
-      type: String,
-    },
     notes: {
       type: String,
     },

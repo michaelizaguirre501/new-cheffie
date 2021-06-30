@@ -18,7 +18,6 @@ module.exports = {
       await Order.create({
         user: req.user.userName,
         itemIds: orderIds,
-        createdAt: Date().toLocaleString(),
         notes: req.body.notes,
       }),
         res.render("thankYou.ejs");

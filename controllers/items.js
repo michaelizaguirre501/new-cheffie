@@ -70,24 +70,26 @@ module.exports = {
   },
 
   createItem: async (req, res) => {
+    const { name, desc, ingredients, course } = req.body;
     try {
       if (req.file) {
         const result = await cloudinary.uploader.upload(req.file.path);
+
         await Item.create({
-          name: req.body.name,
-          desc: req.body.desc,
-          ingredients: req.body.ingredients,
-          course: req.body.course,
+          name,
+          desc,
+          ingredients,
+          course,
           image: result.secure_url,
           cloudinaryId: result.public_id,
           available: true,
         });
       } else {
         await Item.create({
-          name: req.body.name,
-          desc: req.body.desc,
-          ingredients: req.body.ingredients,
-          course: req.body.course,
+          name,
+          desc,
+          ingredients,
+          course,
         });
       }
       res.redirect("back");
