@@ -29,7 +29,7 @@
           <p style="color: red"><%=orders[i].notes||'None'%></p>
         </h3>
         <h2>
-          Created on: <%=orders[i].updatedAt%>
+          Created: <%=new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(orders[i].createdAt)%>
         </h2>
         <h4>Status:<%= orders[i].fulfilled===true?'Fulfilled':'Unfulfilled' %></h4>
         <form

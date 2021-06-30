@@ -35,11 +35,10 @@ You must create a free cloudinary account
 
 ### Create a .env file in the config folder containing:
 
-MONGO_STRING = YOUR MONGODB STRING
-
-CLOUDINARY_NAME = YOUR CLOUDINARY NAME
-API_KEY = YOUR CLOUDINARY API KEY
-API_SECRET = YOUR CLOUDINARY SECRET
+MONGO_STRING = Your MongoDB connection string
+CLOUDINARY_NAME = Your cloudinary "Cloud name"
+API_KEY = Your cloudinary "API Key"
+API_SECRET = Your cloudinary "API Secret"
 
 SESSION_SECRET = YOUR SESSION SECRET
 

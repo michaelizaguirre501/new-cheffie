@@ -28,12 +28,9 @@ module.exports = {
 
   userOrders: async (req, res) => {
     try {
-      const orders = await Order.find({ user: req.user.userName });
-      for (let order of orders) {
-        order.itemIds = await Promise.all(
-          order.itemIds.map((itemId) => Item.findById(itemId))
-        );
-      }
+      const orders = await Order.find({ user: req.user.userName }).populate({
+        path: "itemIds",
+      });
 
       console.log(`orders for ${req.user.userName} found`);
       res.render("myOrders.ejs", { orders });
