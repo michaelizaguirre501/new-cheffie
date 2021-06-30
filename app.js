@@ -1,5 +1,7 @@
+//Use .env file in config folder
+require("dotenv").config({ path: "./config/.env" });
+
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
@@ -13,8 +15,7 @@ const mainRoutes = require("./routes/main");
 const itemsRoutes = require("./routes/items");
 const ordersRoutes = require("./routes/orders");
 
-//Use .env file in config folder
-require("dotenv").config({ path: "./config/.env" });
+const app = express();
 
 // Passport config
 require("./config/passport")(passport);
@@ -42,7 +43,7 @@ app.use(methodOverride("_method"));
 // Setup Sessions - stored in MongoDB
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -71,5 +72,5 @@ app.use("/orders", ordersRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log(`Server is running on PORT ${PORT}`);
+  console.info(`Server is running on PORT ${PORT}`);
 });
