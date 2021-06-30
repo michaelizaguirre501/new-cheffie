@@ -28,6 +28,21 @@ Authentication with Passport
 
 Multer for file uploads and Cloudinary for storage
 
+## Running this app locally on your Machine?
+
+You must have a MongoDB account and cluster
+You must create a free cloudinary account
+
+### Create a .env file in the config folder containing:
+
+MONGO_STRING = YOUR MONGODB STRING
+
+CLOUDINARY_NAME = YOUR CLOUDINARY NAME
+API_KEY = YOUR CLOUDINARY API KEY
+API_SECRET = YOUR CLOUDINARY SECRET
+
+SESSION_SECRET = YOUR SESSION SECRET
+
 ## Walkthrough of the app.
 
 ### As a chef
