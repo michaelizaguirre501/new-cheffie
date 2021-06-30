@@ -1,11 +1,11 @@
 const cloudinary = require("../middleware/cloudinary");
-const Items = require("../models/Items");
+const Item = require("../models/Item");
 const Order = require("../models/Order");
 
 module.exports = {
   getMenu: async (req, res) => {
     try {
-      const items = await Items.find().lean();
+      const items = await Item.find().lean();
       const courses = { Starter: [], Main: [], "Side-dish": [], Dessert: [] };
       const formattedItems = items.reduce((items, item) => {
         items[item.course].push(item);
@@ -26,7 +26,7 @@ module.exports = {
 
   getRemovedMenu: async (req, res) => {
     try {
-      const items = await Items.find({ available: false }).lean();
+      const items = await Item.find({ available: false }).lean();
       const courses = { Starter: [], Main: [], "Side-dish": [], Dessert: [] };
       const formattedItems = items.reduce((items, item) => {
         items[item.course].push(item);
@@ -47,12 +47,7 @@ module.exports = {
   getCreateForm: async (req, res) => {
     if (req.user.isAdmin) {
       try {
-        const orders = await Order.find().lean();
-        for (let order of orders) {
-          order.itemIds = await Promise.all(
-            order.itemIds.map((itemId) => Items.findById(itemId))
-          );
-        }
+        const orders = await Order.find().populate({ path: "itemIds" });
 
         // create an object with order.itemIds.names and ingredients while counting duplicates to be sent to ejs as counts
         const counts = orders.reduce((acc, order) => {
@@ -75,24 +70,26 @@ module.exports = {
   },
 
   createItem: async (req, res) => {
+    const { name, desc, ingredients, course } = req.body;
     try {
       if (req.file) {
         const result = await cloudinary.uploader.upload(req.file.path);
-        await Items.create({
-          name: req.body.name,
-          desc: req.body.desc,
-          ingredients: req.body.ingredients,
-          course: req.body.course,
+
+        await Item.create({
+          name,
+          desc,
+          ingredients,
+          course,
           image: result.secure_url,
           cloudinaryId: result.public_id,
           available: true,
         });
       } else {
-        await Items.create({
-          name: req.body.name,
-          desc: req.body.desc,
-          ingredients: req.body.ingredients,
-          course: req.body.course,
+        await Item.create({
+          name,
+          desc,
+          ingredients,
+          course,
         });
       }
       res.redirect("back");
@@ -103,7 +100,7 @@ module.exports = {
   //Set item available  to false removing it from the menu page
   removeItem: async (req, res) => {
     try {
-      const item = await Items.updateOne(
+      const item = await Item.updateOne(
         { _id: req.params.id },
         { available: false }
       );
@@ -117,8 +114,8 @@ module.exports = {
   //permanently delete menu item from database. This will throw error in orders
   deleteItem: async (req, res) => {
     try {
-      const item = await Items.findById({ _id: req.params.id });
-      await Items.deleteOne(item);
+      const item = await Item.findById({ _id: req.params.id });
+      await Item.deleteOne(item);
       console.log(`Item ${item} removed`);
       res.redirect("back");
     } catch (err) {
@@ -128,7 +125,7 @@ module.exports = {
   //set item availibility to true removing it from removed items page and restoring it to menu
   restoreItem: async (req, res) => {
     try {
-      const item = await Items.updateOne(
+      const item = await Item.updateOne(
         { _id: req.params.id },
         { available: true }
       );

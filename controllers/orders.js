@@ -1,11 +1,11 @@
-const Items = require("../models/Items");
+const Item = require("../models/Item");
 const Order = require("../models/Order");
 
 module.exports = {
   addOrder: async (req, res) => {
     try {
       let orderObj = JSON.parse(req.body.orders);
-      const order = await Items.find({ _id: { $in: orderObj } }).lean();
+      const order = await Item.find({ _id: { $in: orderObj } }).lean();
       res.render("confirm.ejs", { order: order, user: req.user });
     } catch (err) {
       console.log(`ORDER CONTROLLER ${err}`);
@@ -18,7 +18,6 @@ module.exports = {
       await Order.create({
         user: req.user.userName,
         itemIds: orderIds,
-        createdAt: Date().toLocaleString(),
         notes: req.body.notes,
       }),
         res.render("thankYou.ejs");
@@ -32,7 +31,7 @@ module.exports = {
       const orders = await Order.find({ user: req.user.userName });
       for (let order of orders) {
         order.itemIds = await Promise.all(
-          order.itemIds.map((itemId) => Items.findById(itemId))
+          order.itemIds.map((itemId) => Item.findById(itemId))
         );
       }
 

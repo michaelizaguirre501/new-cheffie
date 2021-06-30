@@ -1,6 +1,7 @@
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
+//imports
 const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -24,7 +25,7 @@ require("./config/passport")(passport);
 connectDB();
 
 //Using EJS for views
-app.set("views", path.join(__dirname, "views"));
+//
 app.set("view engine", "ejs");
 
 //Static Folder

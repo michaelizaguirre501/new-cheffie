@@ -29,7 +29,7 @@
           <p style="color: red"><%=orders[i].notes||'None'%></p>
         </h3>
         <h2>
-          <%=orders[i].createdAt.substr(0,orders[i].createdAt.indexOf('GMT'))%>
+          Created on: <%=orders[i].updatedAt%>
         </h2>
         <h4>Status:<%= orders[i].fulfilled===true?'Fulfilled':'Unfulfilled' %></h4>
         <form

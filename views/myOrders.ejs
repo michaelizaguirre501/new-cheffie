@@ -28,7 +28,7 @@
             <p style="color: red"><%=orders[i].notes||'None'%></p>
           </h3>
           <h2>
-            <%=orders[i].createdAt.substr(0,orders[i].createdAt.indexOf('GMT'))%>
+            <%=orders[i].updatedAt%>
           </h2>
           <form
             action="/orders/deleteOrder/<%= orders[i]._id %>?_method=DELETE"
