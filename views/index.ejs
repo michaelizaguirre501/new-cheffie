@@ -1,41 +1,21 @@
 <%- include('partials/header') -%>
 
-<div
-  id="carouselSlides"
-  class="carousel slide"
-  data-bs-ride="carousel"
-  style="width: 60%; margin: 3rem auto"
->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/images/carosel1.png" class="d-block w-100" alt="..." />
-    </div>
-    <div class="carousel-item">
-      <img src="/images/carosel1.png" class="d-block w-100" alt="..." />
-    </div>
-    <div class="carousel-item">
-      <img src="/images/carosel1.png" class="d-block w-100" alt="..." />
-    </div>
+<div id="banner" class="d-flex">
+  <div class="banner-left"></div>
+  <div class="banner-right">
+    <h1>Restaurant quality food delivered right to your door.</h1>
+    <p>
+      We provide our chefs with a platform to truly show off their dishes for
+      their customers.
+    </p>
+
+    <p>
+      <a id="signup-link" href="/signup">Sign up</a> for a free account today to
+      see what Cheffie can do for you.
+    </p>
   </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselSlides"
-    data-bs-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselSlides"
-    data-bs-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
-<footer class="bg-light text-center text-lg-start fixed-bottom mt-5">
+
+<footer class="bg-light text-center text-lg-start mt-5">
   <%- include('partials/footer') -%>
-</footer>
+

@@ -27,6 +27,37 @@ a {
 .fulfilled .deleteButton {
   background-color: red;
 }
-.modal-backdrop {
-  z-index: 10;
+
+.banner-left {
+  background-image: url("../../images/banner.jpg");
+
+  height: 800px;
+  width: 45%;
+  object-fit: contain;
+}
+.banner-right {
+  height: 800px;
+  width: 55%;
+  padding: 1rem 0 0 1rem;
+}
+
+.banner-right > h1 {
+  color: white;
+  font-size: 4rem;
+  margin-bottom: 7rem;
+}
+
+.banner-right > p {
+  margin-top: 2rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+#signup-link {
+  color: white;
+  text-decoration: none;
+}
+
+#signup-link:hover {
+  color: rgb(26, 54, 212);
 }
