@@ -94,13 +94,3 @@ Possible Reset button which would remove all menu items and orders, which would 
 ## Thanks for reading
 
 Contact me on [LinkedIn](https://www.linkedin.com/in/michaelizaguirrewebdev/)
-
-<!-- Make orders fulfilable-->
-
-<!-- <form
-            action="/items/deleteItem/<%= items[i]._id %>?_method=DELETE"
-            method="POST"
-            class="col-3"
-          >
-            <button class="btn btn-danger mt-2" type="submit">Delete</button>
-          </form> -->
